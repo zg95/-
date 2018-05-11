@@ -15,7 +15,10 @@ var App = function() {
         /*程序 1.0*/
         var number = fullStyle[0].length,
             a = 0 ,
-            x = 0 ;
+            x = 0 ,
+            l = 0 ,
+            L = 0 ,
+            y = 0 ;
         // $("#app").html(fullStyle[0].charAt(0));
         $("#app").prepend("<pre></pre>");
         $("#app").prepend("<div class='appcss'><style></style></div>");
@@ -23,19 +26,44 @@ var App = function() {
         // console.log(fullStylel)
         fullStyle = fullStyle.join()
         fullStyleArr = fullStyle.split("\n");
-        console.log(fullStyleArr);
+        // console.log(fullStyleArr[0]);
         function task() {
             if(a < number) {
 
                 $("#app pre").append(fullStyle[a]);
                 $("#app .appcss style").append(fullStyle[a]);
                 a += 1;
+                // console.log(fullStyle)
+               var jinghua =  fullStyle.replace(/[\r\n]/g,"");
+
+                jinghua =$.trim(jinghua)
+                // console.log(jinghua.substring(L, l));
+                /* 包装文字 用span*/
+                if(jinghua.substring(L, l) == fullStyleArr[x]){
+                    /*还没有判断*/
+                    var html = "<span class='xxx'>"+jinghua.substring(L, l)+"</span><br>";
+
+                    var character = $("#app pre").html().substring(y, a);
+
+                    L = l;
+                    x += 1;
+
+                    $("#app pre").append(html);
+
+                   /* 处理多余文字 */
+                    var $p = $("#app pre").find('span');
+                    $("#app pre").html($p);
+                    $p.after('<br>');
+                    /* 处理多余文字 END*/
+
+                }else{
+                    l += 1;
+                }
+                /* 包装文字 用span END*/
+                /*反复刷新*/
                 $("#app pre").html($("#app pre").html());
                 $("#app .appcss style").html($("#app .appcss style").html());
-                // if(){
-                //
-                // }
-                // console.log($("#app pre").html())
+                /*反复刷新 END*/
                 /*滚动条自动底部*/
                 $(".styleEditor").scrollTop($(".styleEditor")[0].scrollHeight);
                 /*滚动条自动底部END*/
