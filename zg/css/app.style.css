@@ -52,6 +52,12 @@ html[data-v-53c8d54c] {
 *[data-v-53c8d54c]{
   box-sizing: border-box;
 }
+@media (max-width: 767px) {
+  .resumeEditor{
+    left: -12px;
+    top: 335px;
+  }
+}
 
 
 /*# sourceMappingURL=app.05505556d08b29c951aef21426afeae1.css.map*/
