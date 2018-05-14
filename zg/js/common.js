@@ -139,7 +139,7 @@ var App = function() {
                 $(".htmlMode pre").append(fullMarkdown[Introductiona]);
                 Introductiona += 1;
                 $(".htmlMode pre").html($(".htmlMode pre").html());
-                // $(".htmlMode").scrollTop($(".htmlMode")[0].scrollHeight);
+                $(".htmlMode").scrollTop($(".htmlMode")[0].scrollHeight);
                 // $(".htmlMode pre")
             }else {
                 clearInterval(timerIntroduction);

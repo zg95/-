@@ -54,8 +54,8 @@ html[data-v-53c8d54c] {
 }
 @media (max-width: 767px) {
   .resumeEditor{
-    left: -12px;
-    top: 335px;
+    left: -12px !important;
+    top: 335px !important;
   }
 }
 
