@@ -76,6 +76,7 @@ var App = function() {
                     text= text.replace(/\)/g,"<span class='token punctuation'>)</span>");
                     text= text.replace("translateZ","<span class='token function'>translateZ</span>");
                     text= text.replace("rotateY","<span class='token function'>rotateY</span>");
+                    text= text.replace("rotateX","<span class='token function'>rotateX</span>");
                     text= text.replace("rgb","<span class='token function'>rgb</span>");
                     html = "<span class='token comment'>"+text+"</span><br>";
                     console.log(text)
