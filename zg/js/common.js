@@ -148,7 +148,7 @@ var App = function() {
             }else {
                 clearInterval(timerIntroduction);
                 timerIntroduction = null;
-                $(".resumeEditor").append('<div class="text"><a href="张冠.doc" download="张冠.doc">我的简历</a></div>')
+                $(".resumeEditor").append('<div class="text"><a href="张冠.doc" download="张冠.doc">点击下载我的简历</a></div>')
                 /*pre 转 div*/
                 // var $div = $(".htmlMode pre");
                 // var html = $div.get(0).outerHTML;
