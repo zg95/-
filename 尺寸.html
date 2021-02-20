@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title</title> 
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+  var BASE_URL = 'https://staging-ocps.te-internal.com/';
+  var require = {
+      "baseUrl": "https://staging-ocps.te-internal.com/static/version1613559284/frontend/Te/online/zh_Hans_CN"
+  };
+  var mediaUrl ='https://staging-ocps.te-internal.com/static/version1613559284/frontend/Te/online/zh_Hans_CN';
+  var CNY_RATE = "8.178806670000";
+  var CUSTOMER_LOGGED_IN = "1";
+  var APPROVAL_CUSTOMER = "0";
+</script>
+<script>
+$(document).ready(function(){
+ 
+  var type,sex,brand,Mock
+  Mock = {  
+    "code": 200,
+    "message": "success",
+    "data": {
+        "size": [
+            "34",
+            "34,5",
+            "35",
+            "35,5",
+            "36",
+            "36,5",
+            "37",
+            "37,5",
+            "38",
+            "38,5",
+            "39",
+            "39,5",
+            "40",
+            "40,5",
+            "41"
+        ],
+        "data": [
+            {
+                "label": "Europe",
+                "array": [
+                    {
+                        "label": "34",
+                        "value": "34"
+                    },
+                    {
+                        "label": "34,5",
+                        "value": "34,5"
+                    },
+                    {
+                        "label": "35",
+                        "value": "35"
+                    },
+                    {
+                        "label": "35,5",
+                        "value": "35,5"
+                    },
+                    {
+                        "label": "36",
+                        "value": "36"
+                    },
+                    {
+                        "label": "36,5",
+                        "value": "36,5"
+                    },
+                    {
+                        "label": "37",
+                        "value": "37"
+                    },
+                    {
+                        "label": "37,5",
+                        "value": "37,5"
+                    },
+                    {
+                        "label": "38",
+                        "value": "38"
+                    },
+                    {
+                        "label": "38,5",
+                        "value": "38,5"
+                    },
+                    {
+                        "label": "39",
+                        "value": "39"
+                    },
+                    {
+                        "label": "39,5",
+                        "value": "39,5"
+                    },
+                    {
+                        "label": "40",
+                        "value": "40"
+                    },
+                    {
+                        "label": "40,5",
+                        "value": "40,5"
+                    },
+                    {
+                        "label": "41",
+                        "value": "41"
+                    }
+                ]
+            },
+            {
+                "label": "USA",
+                "array": [
+                    {
+                        "label": "34",
+                        "value": "4"
+                    },
+                    {
+                        "label": "34,5",
+                        "value": "4,5"
+                    },
+                    {
+                        "label": "35",
+                        "value": "5"
+                    },
+                    {
+                        "label": "35,5",
+                        "value": "5,5"
+                    },
+                    {
+                        "label": "36",
+                        "value": "6"
+                    },
+                    {
+                        "label": "36,5",
+                        "value": "6,5"
+                    },
+                    {
+                        "label": "37",
+                        "value": "7"
+                    },
+                    {
+                        "label": "37,5",
+                        "value": "7,5"
+                    },
+                    {
+                        "label": "38",
+                        "value": "8"
+                    },
+                    {
+                        "label": "38,5",
+                        "value": "8,5"
+                    },
+                    {
+                        "label": "39",
+                        "value": "9"
+                    },
+                    {
+                        "label": "39,5",
+                        "value": "9,5"
+                    },
+                    {
+                        "label": "40",
+                        "value": "10"
+                    },
+                    {
+                        "label": "40,5",
+                        "value": "10,5"
+                    },
+                    {
+                        "label": "41",
+                        "value": "11"
+                    }
+                ]
+            },
+            {
+                "label": "UK",
+                "array": [
+                    {
+                        "label": "34",
+                        "value": "1"
+                    },
+                    {
+                        "label": "34,5",
+                        "value": "1,5"
+                    },
+                    {
+                        "label": "35",
+                        "value": "2"
+                    },
+                    {
+                        "label": "35,5",
+                        "value": "2,5"
+                    },
+                    {
+                        "label": "36",
+                        "value": "3"
+                    },
+                    {
+                        "label": "36,5",
+                        "value": "3,5"
+                    },
+                    {
+                        "label": "37",
+                        "value": "4"
+                    },
+                    {
+                        "label": "37,5",
+                        "value": "4,5"
+                    },
+                    {
+                        "label": "38",
+                        "value": "5"
+                    },
+                    {
+                        "label": "38,5",
+                        "value": "5,5"
+                    },
+                    {
+                        "label": "39",
+                        "value": "6"
+                    },
+                    {
+                        "label": "39,5",
+                        "value": "6,5"
+                    },
+                    {
+                        "label": "40",
+                        "value": "7"
+                    },
+                    {
+                        "label": "40,5",
+                        "value": "7,5"
+                    },
+                    {
+                        "label": "41",
+                        "value": "8"
+                    }
+                ]
+            }
+        ]
+    }
+},
+  type='上衣'
+  sex='女士'
+  brand='gucci'
+  var url = BASE_URL+ 'rest/V1/external/ProductAttribute/getProductSizeList?'
+  var set = this
+  var initializeTh =function(data){
+    var html;
+    html='<tr><th>国际</th>';
+    data.forEach(item => {
+      html +=  '<th>'+item+'</th>'
+    });
+    html += '</tr>';
+    $('thead').append(html)  
+  };
+  var initializeTd =function(data){
+    console.log(data)
+    var html='';
+    let size = data.size;
+    console.log(size)
+    data.data.forEach((item,index) => {
+//      console.log(size)
+      html += '<tr>';
+      html += '<td>'+item.label+'</td>';
+      item.array.forEach((data,arrayindex) => {
+        if(size.indexOf(data.label)>=0){
+          html += '<td>'+data.value+'</td>'
+        }else{
+          html += '<td></td>'
+        }
+      })
+      html += '</tr>' 
+    });
+    console.log(html)
+    $('tbody').append(html)  
+  };
+  $.ajax({
+      type: 'GET',
+      url: url,
+      cache: true,
+      async:false,
+      dataType: 'json',
+      data: {
+          "type": type,
+          "sex": sex,
+          "brand": brand,
+      },
+      success: function(data){
+        console.log(data)
+      },
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest.statusText);
+        // console.log(Mock)
+        if(Mock.code == 200 && Mock.data.data.length>0){
+          initializeTh(Mock.data.size);
+          initializeTd(Mock.data)
+        }
+      },
+  });
+});
+</script>
+</head>
+<body>
+  <table class="product_size">
+
+    <thead>
+    </thead>
+
+    <tbody>
+    </tbody>
+
+  </table>
+  <style>
+    div{
+
+      overflow:auto;
+
+      width:400px;
+
+      height:290px; /* 固定高度 */
+      border:1px solid gray;
+      border-bottom: 0;
+      border-right: 0;
+
+    }
+
+    .product_size tbody tr{
+      background-color: #FFFFFF;
+    }
+
+    .product_size tbody tr:nth-child(even){
+      background-color: #F6F6F6;
+    }
+
+
+    .product_size td,.product_size th {
+
+      width:110px;
+
+      height:40px;
+
+      box-sizing: border-box;
+
+      text-align: center;
+
+      font-size: 14px;
+
+    }
+
+    .product_size th {
+
+      background-color:#F6F6F6;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+    }
+
+
+    .product_size {
+      border-collapse:separate;
+      table-layout: fixed;
+      width: 100%;
+
+    }
+
+    .product_size td:first-child,.product_size th:first-child {
+
+      position:sticky;
+
+      left:0; /* 首行在左 */
+
+      z-index:1;
+
+      border-width: 0;border-right-style:solid; border-right-width: 6px;
+
+      border-image: linear-gradient(to right,#000000,transparent ) 5 20;
+      
+    }
+
+    .product_size td:first-child{
+      background-color: #FFFFFF;
+    }
+
+    .product_size tbody tr:nth-child(even) td:first-child{
+      background-color: #F6F6F6;
+    }
+
+    .product_size thead tr th {
+
+      position:sticky;
+
+      top:0; /* 第一列最上 */
+
+    }
+
+    .product_size th:first-child{
+
+      z-index:2;
+
+    }
+  </style>
+
+</body>
+</html>
